@@ -1,0 +1,18 @@
+.home_page {
+    display: block;
+    max-width: 950px;
+    background-color: #edeeee;
+    padding: 32px;
+    margin-left: 300px;
+    margin-top: 50px; 
+}
+.rating-display {
+    float: left;
+   width: auto;
+   margin-left: 1em;
+}
+
+.ques_button_submit {
+    margin-top: 20px; 
+    margin-left: 730px;
+  }

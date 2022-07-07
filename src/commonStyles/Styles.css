@@ -1,0 +1,32 @@
+.form {
+    /* display: block; */
+    max-width: 350px;
+    background-color: #edeeee;
+    padding: 32px;
+    border-radius: 1em;
+  }
+  h2 {
+      color:blue;
+      
+  }
+  .form_header {
+     padding-left: 60px
+  }
+/* .form_model {
+    padding: 120px 500px;
+} */
+.button_submit {
+  float: right;
+}
+ 
+  
+  
+  
+  
+  @media all and (min-width: 480px) {
+      .form_model {
+        padding: 120px 600px;
+      }
+    
+     
+    }
