@@ -58,7 +58,7 @@ export const SurveyJson = {
     "showQuestionNumbers": "off"
   };
 
-export const RatingArray = [0,1,2,3,4,5,6,7,8,9,10]
+export const RatingArray = [1,2,3,4,5]
 export const productRevivew = ["High quality","Poor quality","Overpriced","Good value for money"]
 export const userRatings = ["Satisfied", "Dissatisfied", "Neither satisfied nor dissatisfied"]
 export const sampleVisualzieddata = [
@@ -96,3 +96,40 @@ export const sampleVisualzieddata = [
     __v: 0
   }
 ]
+
+export const tableData = [
+  { 
+     tableHeader:[{title:"rating"},{title:"productReview"},{title:"Productdesc"},{title:"email"}],
+     tableBody:[
+      {
+       rating:"1",
+       productReview: "good",
+       productdesc:"good product",
+       email:"mkr.dasari@gmail.com"
+      },
+       {
+       rating:"2",
+       productReview: "bad",
+       productdesc:"bad product",
+       email:"satishalapati502@gmail.com"
+      }
+  ]
+  },
+  { 
+     tableHeader:[{title:"rating"},{title:"productReview"},{title:"Productdesc"},{title:"email"}],
+     tableBody:[
+      {
+       rating:"1",
+       productReview: "good",
+       productdesc:"good product",
+       email:"mkr.dasari@gmail.com"
+      },
+       {
+       rating:"2",
+       productReview: "bad",
+       productdesc:"bad product",
+       email:"satishalapati502@gmail.com"
+      }
+  ]
+  }
+  ]

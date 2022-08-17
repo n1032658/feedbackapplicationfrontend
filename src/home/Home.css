@@ -1,0 +1,43 @@
+.home_table_page {
+    display: block;
+    max-width: 995px;
+    background-color: #edeeee;
+    padding: 32px;
+    margin-left: 300px;
+    margin-top: 50px; 
+}
+.table-header {
+    display: flex;
+    /* flex-direction: row; */
+}
+/* .form-control {
+    width: 260px;
+    line-height: 1.8;
+} */
+.search-button {
+  margin-left: 10px;
+  height: 35px;
+}
+.downloader-button {
+    margin-left: 400px;
+}
+
+.download-button-style {
+    color: white;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.button-align {
+    margin-left: 550px;
+    margin-bottom: 10px;
+    height: 35px;
+}
+.button-download {
+    margin-left: 400px;
+    margin-bottom: 10px;
+    height: 35px;
+}
+.reply-button {
+    height: 35px;
+}

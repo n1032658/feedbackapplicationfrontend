@@ -7,8 +7,10 @@ import SurveyQuestions from './surveyQuestions/SurveyQuestionsForm';
 import CreateSurvey from './createSurvey/CreateSurvey';
 import Login from './login/Login';
 import ThankyouPage from './thankyou/ThankyouPage';
+import QRCODEPage from './qrCode/QRCode';
 import Register from './register/Regiser';
 import Visualization from './visualization/VisualizationPage';
+import SurveyForQR from './surveyForQR/SurveyForQR';
 
 
 
@@ -23,6 +25,8 @@ return(
    <Route exact path="/createSurvey" element={<CreateSurvey/>} />
    <Route exact path="/thankyouPage" element={<ThankyouPage />} />
    <Route exact path="/visualization" element={<Visualization />} />
+   <Route exact path="/qrCode" element={<QRCODEPage />} />
+   <Route exact path="/surveySubmit" element={<SurveyForQR />} />
     </Routes>
     </Router>
   );

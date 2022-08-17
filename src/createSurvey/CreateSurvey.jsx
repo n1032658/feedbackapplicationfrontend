@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import Toast from 'react-bootstrap/Toast';
 import axios from "axios";
-import validator from 'validator';
 import Header from "../Header";
 import "./CreateSurvey.css";
 import "../commonStyles/Styles.css"
@@ -20,8 +19,9 @@ export default function CreateSurvey(){
     const [displayResult, setDisplayResult] = useState();
    const [errorMessage, setErrorMessage] = useState('');
    const [emailMessage, setEmailMessage] = useState('');
+   const [emailValidation, setEmailValidation] = useState(false);
    const [show, setShow] = useState(false);
-   
+   const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 
 
@@ -39,28 +39,35 @@ export default function CreateSurvey(){
         }
        
         if(recipentsEmailAddress !== ''){
-            let errorMessage = validator.isEmail(recipentsEmailAddress) === false ? 'Please Enter Valid Email' : '' 
-            setErrorMessage(errorMessage)
+            let inValidEmails = recipentsEmailAddress
+            .split(',')
+            .map(email => email.trim())
+            .filter(email => regex.test(email) === false)
+           if(inValidEmails.length){
+              setErrorMessage(`This emails are invalid: ${inValidEmails}`)
             setEmailMessage('')
+           }else{
+            setEmailValidation(true)
+            setErrorMessage('')
+            setEmailMessage('')
+           }
+            
         }
     
-        if(recipentsEmailAddress !== '' && validator.isEmail(recipentsEmailAddress)){
+        if(recipentsEmailAddress !== '' && emailValidation){
             axios
             .post("https://morning-beyond-34988.herokuapp.com/api/surveys", payload, { headers: HEADERS })
             .then((resp) => {
               let result = resp.data ? resp.data.message ?  resp.data.message: '': '';
-              setDisplayResult(result)
-              setShow(true)
-              // if (result === "valid") {
-              //   // navigate("/home");
-
-
-
-              //   localStorage.setItem('username', userName);
-              //   navigate("/home", { state: userName });
-              // } else {
-              //   setDisplayResult("Invalid credentials");
-              // }
+              if(result){
+                setDisplayResult(result)
+                setShow(true)
+                setTitle('');
+                setSubjectLine('');
+                setEmailBody('');
+                setRecipentsEmailAddress('')
+              }
+             
             });
         }
         
@@ -77,7 +84,6 @@ export default function CreateSurvey(){
         <Fragment>
             <Header />
              <div  className="survey_email">
-                  {/* <span style={{color:'green'}}>{displayResult}</span> */}
                   <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide bg={'success'} > 
                   <Toast.Header>
                   <strong className="me-auto">Email Success Message</strong>

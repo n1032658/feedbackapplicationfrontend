@@ -1,23 +1,26 @@
 import React, {useState,  Fragment} from "react";
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Header from "../Header";
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
-import "./surveyQuestionsForm.css";
+import "../surveyQuestions/surveyQuestionsForm.css";
 import "../commonStyles/Styles.css";
 import {RatingArray,userRatings} from "../helper/data";
+
 const HEADERS = {
   Accept: "application/json",
   "Content-Type": "application/json",
 };
 
-function SurveyQuestionsForm() {
+function SurveyForQR() {
   const navigate = useNavigate();
-  const {email,surveyId} = useParams()
+//   const {email,surveyId} = useParams()
   const [radiovalue, setRadioValue] = useState('');
   const [userRatingStatus, setUserRatingStatus] = useState('');
   const [needToChangeText, setNeedToChangeText] = useState('');
+  const [email, setEmail] = useState('');
  
   
  
@@ -38,7 +41,7 @@ const handleSubmit = () => {
 //     return checkboxValues.indexOf(c) === index;
 // });
   const payload = { 
-    "surveyId": surveyId,
+    "surveyId": '62fbdfc3e20c152a265f6433',
     "email": email,
     "userRating": radiovalue,
    "userReview": userRatingStatus,
@@ -79,6 +82,11 @@ let userRatingValues = userRatings.map((item) => {
   return (
    <Fragment>
      <Header />
+     <div className="home_page">
+        <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
+            <Form.Control type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
+        </FloatingLabel>
+       </div>
        <div className="home_page">
          <p>1. On a scale of zero to ten, how likely to recommend our product to a friend or colleague ? rating</p>
          {ratingValues}
@@ -103,4 +111,4 @@ let userRatingValues = userRatings.map((item) => {
   );
 }
 
-export default SurveyQuestionsForm;
+export default SurveyForQR;

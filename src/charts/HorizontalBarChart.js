@@ -1,53 +1,28 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React, { useEffect } from "react";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 export default function HorizontalBarChart(props){
 
-    // var data = [{
-    //     year: "2017",
-    //     income: 23.5,
-    //     expenses: 18.1
-    //   }, {
-    //     year: "2018",
-    //     income: 26.2,
-    //     expenses: 22.8
-    //   }, {
-    //     year: "2019",
-    //     income: 30.1,
-    //     expenses: 23.9
-    //   }, {
-    //     year: "2020",
-    //     income: 29.5,
-    //     expenses: 25.1
-    //   }, {
-    //     year: "2021",
-    //     income: 24.6,
-    //     expenses: 25
-    //   }];
     useEffect(() => {
-      // console.log(props.horizontalbarVisualzieddata)
-     
-         if(props.horizontalbarVisualzieddata["rating"]){
+         if(props.horizontalbarVisualzieddata && props.horizontalbarVisualzieddata["rating"] && props.horizontalbarVisualzieddata["rating"]){
           let ratingArray = [];
                  Object.keys(props.horizontalbarVisualzieddata["rating"]).map((item) => {
-                          //  console.log(props.horizontalbarVisualzieddata["rating"][item])
                            let ratingObj = {};
                            ratingObj["ratingPoint"] = item;
                            ratingObj["number of Users"] = props.horizontalbarVisualzieddata["rating"][item];
                            ratingArray.push(ratingObj)
 
                  })
-                //  console.log(ratingArray)
                      renderChart(ratingArray)
          }
       
     },[props.horizontalbarVisualzieddata])
 
     const renderChart = (data) => {
-      // console.log(data)
-        var root = am5.Root.new("chartdiv" + props.id);
+    //  console.log(props.id)
+        var root = am5.Root.new(`chartdiv${props.id}`);
         root.setThemes([
             am5themes_Animated.new(root)
           ]);
@@ -58,10 +33,13 @@ export default function HorizontalBarChart(props){
             wheelY: "zoomX",
             layout: root.verticalLayout
           }));
+          // it will may use later
+
           // var legend = chart.children.push(am5.Legend.new(root, {
           //   centerX: am5.p50,
           //   x: am5.p50
           // }))
+          
           var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
             categoryField: "ratingPoint",
             renderer: am5xy.AxisRendererY.new(root, {
@@ -123,7 +101,7 @@ export default function HorizontalBarChart(props){
               });
             });
           
-            series.data.setAll(data);
+            series.data.setAll(data); 
             series.appear();
           
             return series;
@@ -136,7 +114,7 @@ export default function HorizontalBarChart(props){
           
           legend.data.setAll(chart.series.values);                   
     }
-
+// console.log(props.id)
     let chartdiv = "chartdiv" + props.id
     return(
         <div>

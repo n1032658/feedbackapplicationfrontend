@@ -18,7 +18,18 @@
 .button_submit {
   float: right;
 }
- 
+.header-nav {
+  margin-left: 900px;
+}
+ .loader-set {
+  margin-top: 200px;
+  margin-left: 700px;
+ }
+ .error-set {
+  margin-top: 200px;
+  margin-left: 700px;
+  font-size: 2em;
+ }
   
   
   

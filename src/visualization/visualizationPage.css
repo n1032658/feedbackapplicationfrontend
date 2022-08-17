@@ -6,3 +6,19 @@
     margin-left: 300px;
     margin-top: 50px; 
 }
+
+.table_display {
+    display: block;
+    max-width: 950px;
+    border-radius: 0em;
+    background-color: rgb(250, 247, 245);
+    padding: 5px;
+}
+.main-body {
+    display: block;
+    width: auto;
+    background-color: wheat;
+    padding: 20px;
+    margin-left: 100px;
+    margin-top: 50px; 
+}

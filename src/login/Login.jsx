@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/Button";
 import "./login.css";
-// import background from "./img/pexels-pixabay-210607.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../commonStyles/Styles.css";
@@ -15,17 +14,13 @@ const HEADERS = {
 
 export default function Login() {
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [displayResult, setDisplayResult] = useState("");
-  // function validateForm() {
-  //   return email.length > 0 && password.length > 0;
-  // }
+ 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // converts into json format
     const temp = JSON.stringify({
       username: userName,
       password: password,
@@ -36,24 +31,17 @@ export default function Login() {
       .then((resp) => {
         let result = resp.data ? resp.data.status ?  resp.data.status: '': '';
         if (result === "valid") {
-          // navigate("/home");
           localStorage.setItem('username', userName);
           navigate("/home", { state: userName });
         } else {
           setDisplayResult("Invalid credentials");
         }
       });
-    //event.preventDefault()
   };
 
-  // useEffect(()=> {
-  //   if (data==='valid') {
-  //     navigate("/home");
-  //   }
-  // }, [data])
+  
 
   return (
-    // <div className="Login" style={{ backgroundImage: `url(${background})`}} >
     <div className="form_model">
       <div className="form_header">
          <h2>Survey App</h2>

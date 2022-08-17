@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../commonStyles/Styles.css";
-// import background from "./img/pexels-pixabay-210607.jpg";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-// import './App.css';
 import { Link } from 'react-router-dom';
 const HEADERS = {
   Accept: "application/json",
@@ -13,8 +10,6 @@ const HEADERS = {
 };
 
 export default function Register() {
-  const navigate = useNavigate();
-  const [data, setData] = useState([]);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [userName, setUserName] = useState("");
@@ -32,34 +27,24 @@ export default function Register() {
       username: userName,
       password: password,
     });
-    console.log(temp);
 
     axios
-      .post("https://hidden-earth-40716.herokuapp.com/api/register", temp, { headers: HEADERS })
+      .post("https://morning-beyond-34988.herokuapp.com/api/register", temp, { headers: HEADERS })
       .then((resp) => {
-        console.log(resp.data);
         let result = resp.data ? resp.data.status ? resp.data.status : '' : '';
           setDisplayResult(result);
         
       });
-    //event.preventDefault()
   };
 
-  // useEffect(()=> {
-  //   if (data==='valid') {
-  //     navigate("/home");
-  //   }
-  // }, [data])
+ 
 
   return (
-   // <div className="Login" style={{ backgroundImage: `url(${background})`}} >
    <div className="form_model ">
      <div className="form_header">
       <h2>Survey App</h2>
       </div>
       <Form onSubmit={handleSubmit}  className="form">
-      {/* <h1 style={{ color: "blue" }}>Stock Brocker Registration</h1> */}
-
         <Form.Group className="mb-3" controlId="firstname">
           <Form.Label>First name</Form.Label>
           <Form.Control
